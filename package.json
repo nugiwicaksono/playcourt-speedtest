@@ -13,7 +13,7 @@
     "request": "^2.85.0"
   },
   "scripts": {
-    "start": "node src/Speedtest.js"
+    "start": "node Speedtest.js"
   },
   "pkg": {
     "assets": [
