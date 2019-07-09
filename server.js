@@ -123,14 +123,14 @@
 // console.log('Server running on http://%s:%s', ip, port);
 
 // module.exports = app ;
-const express = require('express');
-const Server = express();
-const randomBytes = require('random-bytes');
-const path = require('path');
-const request = require('request');
-const helpers = require('./Helpers');
+var express = require('express');
+var Server = express();
+var randomBytes = require('random-bytes');
+var path = require('path');
+var request = require('request');
+var helpers = require('./Helpers');
 
-let cache;
+var cache;
 
 Server.get('/empty', function (req, res) {
     res.sendStatus(200);
@@ -151,10 +151,10 @@ Server.get('/garbage', function (req, res) {
     res.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     res.set('Cache-Control', 'post-check=0, pre-check=0', false);
     res.set('Pragma', 'no-cache');
-    const requestedSize = (req.query.ckSize || 100);
+    var requestedSize = (req.query.ckSize || 100);
     
-    const send = () => {
-        for (let i = 0; i < requestedSize; i++)
+    var send = () => {
+        for (var i = 0; i < requestedSize; i++)
             res.write(cache);
         res.end();
     }
@@ -171,7 +171,7 @@ Server.get('/garbage', function (req, res) {
 });
 
 Server.get('/getIP', function (req, res) {
-    let requestIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.headers['HTTP_CLIENT_IP'] || req.headers['X-Real-IP'] || req.headers['HTTP_X_FORWARDED_FOR'];
+    var requestIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.headers['HTTP_CLIENT_IP'] || req.headers['X-Real-IP'] || req.headers['HTTP_X_FORWARDED_FOR'];
     if (requestIP.substr(0, 7) === "::ffff:") {
         requestIP = requestIP.substr(7)
     }
@@ -183,7 +183,7 @@ Server.get('/getIP', function (req, res) {
                 serverData = JSON.parse(serverData);
                 if (err) res.send(`${requestIP} - ${ipData.org}, ${ipData.country}`);
                 else if (ipData.loc && serverData.loc) {
-                    const d = helpers.calcDistance(ipData.loc.split(','), serverData.loc.split(','));
+                    var d = helpers.calcDistance(ipData.loc.split(','), serverData.loc.split(','));
                     res.send(`${requestIP} - ${ipData.org}, ${ipData.country} (${d}km)`);
                 } else {
                     res.send(`${requestIP} - ${ipData.org}, ${ipData.country}`);

@@ -1,4 +1,4 @@
-const distance = require('gps-distance');
+var distance = require('gps-distance');
 
 /**
  * @param pointA - Array of two Coordinates. Lat / Lng
