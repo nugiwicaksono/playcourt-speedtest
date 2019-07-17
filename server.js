@@ -73,3 +73,5 @@ Server.use(express.static(path.join(__dirname, 'views')));
 Server.listen(8080, function () {
     console.log('Speedtest Server is up and running!');
 });
+
+module.exports = Server;
