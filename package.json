@@ -8,11 +8,11 @@
     "chai-http": "^2.0.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
-    "gps-distance": "^0.0.4",
-    "mocha": "^2.5.3",
+    "mocha": "^2.4.5",
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
     "object-assign": "4.1.0",
+    "gps-distance": "^0.0.4",
     "random-bytes": "^1.0.0",
     "request": "^2.85.0"
   },
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "nyc mocha --timeout 5000"
+    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
   "repository": {
     "type": "git",
@@ -33,8 +33,5 @@
   "bugs": {
     "url": "https://github.com/nugiwicaksono/playcourt-speedtest/issues"
   },
-  "homepage": "https://github.com/nugiwicaksono/playcourt-speedtest",
-  "devDependencies": {
-    "nyc": "^14.1.1"
-  }
+  "homepage": "https://github.com/nugiwicaksono/playcourt-speedtest"
 }
